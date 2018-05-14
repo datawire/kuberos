@@ -4,7 +4,7 @@ set -o nounset
 set -o pipefail
 
 source ci/secrets/cloud1.env.sh
-kops export kubecfg --name kube-usea1-220b026b
+kops export kubecfg --name kube-usea1-220b026b.k736.net
 
 forge build metadata
-forge --profile=utl deploy
+forge --profile=prd deploy
