@@ -13,7 +13,7 @@ chmod +x kubectl
 mv kubectl ~/bin/kubectl
 
 curl -LO https://github.com/kubernetes/kops/releases/download/${KOPS_VERSION}/kops-linux-amd64
-chmod +x kops
+chmod +x kops-linux-amd64
 mv kops ~/bin/kops
 
 kubectl version --client
