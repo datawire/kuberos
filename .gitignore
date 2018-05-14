@@ -6,7 +6,7 @@
 .forge
 
 # --- Misc. ---
-*.sh
+kuberos.sh
 
 # --- Continuous Integration ---
 ci/secrets.tar
