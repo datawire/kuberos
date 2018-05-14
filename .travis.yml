@@ -1,0 +1,25 @@
+---
+sudo: false
+language: generic
+
+services:
+  - docker
+
+env:
+  global:
+    - AWS_PROFILE=kuberos_ci
+    - PATH=~/bin:$PATH
+    - SCOUT_DISABLE=1
+
+before_install:
+  - ci/travis-before-install.sh
+
+install:
+  - ci/travis-install.sh
+
+script:
+  - git branch
+  - git checkout $TRAVIS_BRANCH
+  - git branch
+  - ci/travis_script.sh
+

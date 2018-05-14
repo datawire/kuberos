@@ -1,0 +1,12 @@
+# --- Intellij IDEA ---
+.idea
+*.iml
+
+# --- Forge ---
+.forge
+
+# --- Misc. ---
+*.sh
+
+# --- Continuous Integration ---
+ci/secrets.tar

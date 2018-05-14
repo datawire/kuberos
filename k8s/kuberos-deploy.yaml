@@ -1,0 +1,50 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  labels:
+    k8s-app: kuberos
+  name: kuberos
+  namespace: {{ build.profile.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      k8s-app: kuberos
+  template:
+    metadata:
+      labels:
+        k8s-app: kuberos
+    spec:
+      containers:
+        - name: kuberos
+          image: negz/kuberos:latest
+          command: [
+            "/kuberos",
+            "{{ service.oidcIssuerUrl }}",
+            "{{ service.oidcClientId }}",
+            "/cfg/secret",
+            "/cfg/template"
+          ]
+          ports:
+            - containerPort: 10003
+              protocol: TCP
+#          livenessProbe:
+#            httpGet:
+#              path: /
+#              port: 10003
+#            initialDelaySeconds: 5
+#            timeoutSeconds: 30
+          volumeMounts:
+            - mountPath: /cfg/template
+              name: kuberos-config
+              subPath: template
+              readOnly: true
+            - mountPath: /cfg/secret
+              name: kuberos-config
+              subPath: secret
+              readOnly: true
+      volumes:
+        - name: kuberos-config
+          configMap:
+            name: kuberos-config

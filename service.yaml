@@ -1,0 +1,23 @@
+---
+name: kuberos
+
+kubeApiServerUrl: {{ env.KUBE_API_SERVER_URL }}
+kubeApiServerCaData: {{ env.KUBE_API_SERVER_CA }}
+
+oidcIssuerUrl: https://accounts.google.com
+oidcClientId: {{ env.OIDC_CLIENT_ID }}
+oidcClientSecret: {{ env.OIDC_CLIENT_SECRET }}
+
+tlsCertificateArn: {{ env.AWS_ELB_TLS_CERTIFICATE_ARN }}
+
+profiles:
+  dev:
+    name: {{ branch.replace('/', '-') }}
+    namespace: dev
+  prd:
+    clusterName: cloud1
+    namespace: kube-system
+
+branches:
+  master: prd
+  dev/*:  dev
