@@ -7,7 +7,6 @@ services:
 
 env:
   global:
-    - AWS_PROFILE=kuberos_ci
     - PATH=~/bin:$PATH
     - SCOUT_DISABLE=1
 
