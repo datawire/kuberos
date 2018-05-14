@@ -6,7 +6,7 @@ set -o pipefail
 KOPS_VERSION=1.9.0
 KUBECTL_VERSION=1.10.2
 
-mkdir ~/bin
+mkdir -p ~/bin
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
 chmod +x kubectl
