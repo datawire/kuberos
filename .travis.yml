@@ -15,4 +15,4 @@ script:
 - git branch
 - git checkout $TRAVIS_BRANCH
 - git branch
-- ci/travis_script.sh
+- ci/travis-script.sh
