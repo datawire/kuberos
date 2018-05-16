@@ -8,14 +8,15 @@ oidcIssuerUrl: https://accounts.google.com
 oidcClientId: {{ env.OIDC_CLIENT_ID }}
 oidcClientSecret: {{ env.OIDC_CLIENT_SECRET }}
 
-tlsCertificateArn: {{ env.AWS_ELB_TLS_CERTIFICATE_ARN }}
+tlsCertificateArn: arn:aws:acm:us-east-1:914373874199:certificate/eef979df-e176-4dca-bb38-e035bee14d51
 
 profiles:
   dev:
+    clusterName: kube1
     name: {{ branch.replace('/', '-') }}
-    namespace: dev
+    namespace: sbx
   prd:
-    clusterName: cloud1
+    clusterName: kube1
     namespace: kube-system
 
 branches:

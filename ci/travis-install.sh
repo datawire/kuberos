@@ -27,4 +27,3 @@ chmod +x ~/bin/forge
 forge --version
 kubectl version --client
 kops version
-

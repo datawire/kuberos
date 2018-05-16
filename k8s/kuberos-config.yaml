@@ -10,9 +10,9 @@ data:
     ---
     apiVersion: v1
     kind: Config
-    current-context: {{ build.profile.clusterName }}
     clusters:
-    - name: {{ build.profile.clusterName }}
-      cluster:
-        certificate-authority-data: {{ service.kubeApiServerCaData }}
-        server: {{ service.kubeApiServerUrl }}
+      - name: {{ build.profile.clusterName }}
+        cluster:
+          certificate-authority-data: {{ service.kubeApiServerCaData }}
+          server: {{ service.kubeApiServerUrl }}
+    current-context: {{ build.profile.clusterName }}

@@ -1,19 +1,22 @@
 sudo: false
 language: generic
 services:
-- docker
+  - docker
 env:
   global:
-  - PATH=~/bin:$PATH
-  - KOPS_STATE_STORE=s3://datawire-kops-state
-  - SCOUT_DISABLE=1
+    - PATH=~/bin:$PATH
+    - KOPS_STATE_STORE=s3://datawire-kops-state
+    - SCOUT_DISABLE=1
+
 before_install:
-- openssl aes-256-cbc -K $encrypted_37d2faef682c_key -iv $encrypted_37d2faef682c_iv -in ci/secrets.tar.enc -out ci/secrets.tar -d
-- ci/travis-before-install.sh
+  - openssl aes-256-cbc -K $encrypted_37d2faef682c_key -iv $encrypted_37d2faef682c_iv -in ci/secrets.tar.enc -out ci/secrets.tar -d
+  - ci/travis-before-install.sh
+
 install:
-- ci/travis-install.sh
+  - ci/travis-install.sh
+
 script:
-- git branch
-- git checkout $TRAVIS_BRANCH
-- git branch
-- ci/travis-script.sh
+  - git branch
+  - git checkout $TRAVIS_BRANCH
+  - git branch
+  - ci/travis-script.sh
